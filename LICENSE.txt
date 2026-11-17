@@ -1,0 +1,36 @@
+﻿KOSZTORYSOWNIK — ЛІЦЕНЗІЙНА УГОДА / UMOWA LICENCYJNA
+
+Copyright © 2026 Dmytro Bohatko. Усі права захищені. Wszelkie prawa zastrzeżone.
+
+УКРАЇНСЬКОЮ
+1. Програма Kosztorysownik, її програмний код, дизайн, графіка, шаблони документів
+   і тексти є власністю Dmytro Bohatko (далі — «Власник»).
+2. Власник надає вам невиключне право встановлювати і використовувати програму
+   для ведення власної діяльності.
+3. Без письмової згоди Власника заборонено: копіювати, продавати, здавати в оренду,
+   передавати чи розповсюджувати програму третім особам; змінювати, декомпілювати
+   або створювати похідні продукти на її основі; видаляти позначки про авторські права.
+4. Дані, які ви вводите в програму (кошториси, клієнти, фото), належать вам і
+   зберігаються лише на вашому комп'ютері.
+5. Шаблони договорів і документів є зразками. Користувач самостійно відповідає за
+   їх зміст і за потреби консультується з юристом.
+6. Програма надається «як є». Власник не несе відповідальності за непрямі збитки,
+   пов'язані з використанням програми, в межах, дозволених законом.
+
+PO POLSKU
+1. Program Kosztorysownik, jego kod, projekt graficzny, grafika, szablony dokumentów
+   i teksty stanowią własność Dmytro Bohatko („Właściciel”).
+2. Właściciel udziela niewyłącznej licencji na instalację i używanie programu
+   na potrzeby własnej działalności użytkownika.
+3. Bez pisemnej zgody Właściciela zabrania się: kopiowania, sprzedaży, najmu,
+   udostępniania lub rozpowszechniania programu osobom trzecim; modyfikowania,
+   dekompilacji lub tworzenia utworów zależnych; usuwania oznaczeń praw autorskich.
+4. Dane wprowadzane do programu należą do użytkownika i są przechowywane wyłącznie
+   na jego komputerze.
+5. Szablony umów i dokumentów mają charakter wzorów; użytkownik odpowiada za ich treść.
+6. Program udostępniany jest „w stanie, w jakim jest” w granicach dopuszczalnych prawem.
+
+KOMPONENTY OPEN-SOURCE / КОМПОНЕНТИ З ВІДКРИТИМ КОДОМ
+Program zawiera komponenty na ich własnych licencjach: Electron i Chromium (MIT/BSD),
+heic2any (MIT) z libheif (LGPL-3.0), UTIF.js (MIT), pako (MIT). Prawa do tych
+komponentów należą do ich autorów; niniejsza licencja ich nie obejmuje.
