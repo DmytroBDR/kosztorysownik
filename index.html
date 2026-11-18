@@ -1422,7 +1422,7 @@ function mapMeasure() {
   const find = async () => {
     const t = $('#mp-q').value.trim(); if (!t) return;
     try {
-      const res = await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=pl&q=' + encodeURIComponent(t), { headers: { 'Accept-Language': 'pl' } }).then(r => r.json());
+      const res = await nomSearch(t);
       if (!res.length) return toast('Адресу не знайдено — уточніть або перемістіть карту вручну');
       map.setView([+res[0].lat, +res[0].lon], 20);
     } catch (e) { toast('Пошук недоступний: ' + e.message); }
@@ -1441,12 +1441,15 @@ function mapMeasure() {
 /* ================= ПОГОДА І КАЛЕНДАР БРИГАДИ ================= */
 const WX = {}, GEO = {};
 const WMO = c => c >= 95 ? '⛈️' : (c >= 71 && c <= 77) || c === 85 || c === 86 ? '🌨️' : c >= 51 ? '🌧️' : c >= 45 ? '🌫️' : c >= 3 ? '☁️' : c >= 1 ? '⛅' : '☀️';
+// Nominatim не розуміє «ul.», «al.», поштових індексів — пробуємо кілька варіантів адреси
+const geoVariants = a => { const c = a.replace(/\b(ul|al|os|pl|ulica|aleja|osiedle|plac)\.?\s+/gi, '').replace(/\b\d{2}-\d{3}\b/g, '').replace(/\s*,\s*,/g, ',').replace(/\s{2,}/g, ' ').replace(/^[\s,]+|[\s,]+$/g, ''); const parts = c.split(',').map(x => x.trim()).filter(Boolean); return [...new Set([a, c, parts.length > 1 ? parts[0] + ', ' + parts[parts.length - 1] : '', parts[parts.length - 1] || ''])].filter(Boolean); };
+async function nomSearch(addr) { for (const v of geoVariants(addr)) { const r = await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=pl&q=' + encodeURIComponent(v), { headers: { 'Accept-Language': 'pl' } }).then(r => r.json()); if (r.length) return r; } return []; }
 async function geocode(addr) {
   addr = (addr || '').trim(); if (!addr) return null;
   if (GEO[addr]) return GEO[addr];
   const cache = (() => { try { return JSON.parse(localStorage.getItem('kz_geo') || '{}'); } catch (e) { return {}; } })();
   if (cache[addr]) return GEO[addr] = cache[addr];
-  const res = await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=pl&q=' + encodeURIComponent(addr)).then(r => r.json());
+  const res = await nomSearch(addr);
   if (!res.length) return null;
   const g = { lat: +(+res[0].lat).toFixed(3), lon: +(+res[0].lon).toFixed(3) };
   cache[addr] = g; try { localStorage.setItem('kz_geo', JSON.stringify(cache)); } catch (e) {}
